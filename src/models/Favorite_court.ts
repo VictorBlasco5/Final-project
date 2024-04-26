@@ -1,0 +1,21 @@
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./User";
+import { Court } from "./Court";
+
+@Entity('favorite_courts')
+export class FavoriteCourt extends BaseEntity{
+    @PrimaryGeneratedColumn()
+    id!: number
+
+    @Column({name: 'favorite'})
+    favorite!: string
+
+    @ManyToOne(() => User, (user) => user.favoriteCourts)
+    @JoinColumn ({ name: "user_id" })
+    user!: User;
+
+    @ManyToOne(() => Court, (court) => court.favoriteCourt)
+    @JoinColumn ({ name: "court_id" })
+    court!: Court;
+
+}

@@ -26,6 +26,16 @@ export class Court1714129641445 implements MigrationInterface {
                         length: "50",
                         isNullable: false,
                     },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
                 ],
             }),
             true

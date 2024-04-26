@@ -20,6 +20,16 @@ export class Role1714129148730 implements MigrationInterface {
                         length: "40",
                         isNullable: false,
                     },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
                 ],
             }),
             true

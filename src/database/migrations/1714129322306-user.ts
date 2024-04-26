@@ -54,6 +54,16 @@ export class User1714129322306 implements MigrationInterface {
                         name: "role_id",
                         type: "int",
                     },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
                 ],
                 foreignKeys: [
                     {

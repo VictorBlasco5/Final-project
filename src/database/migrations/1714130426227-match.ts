@@ -39,6 +39,16 @@ export class Match1714130426227 implements MigrationInterface {
                         name: "user_id",
                         type: "int",
                     },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
 
                 ],
                 uniques: [
@@ -51,12 +61,6 @@ export class Match1714130426227 implements MigrationInterface {
                     {
                         columnNames: ["court_id", ],
                         referencedTableName: "courts",
-                        referencedColumnNames: ["id"],
-                        onDelete: "CASCADE"
-                    },
-                    {
-                        columnNames: ["user_id", ],
-                        referencedTableName: "users",
                         referencedColumnNames: ["id"],
                         onDelete: "CASCADE"
                     },

@@ -15,7 +15,7 @@ export class FavoriteCourt1714130144466 implements MigrationInterface {
                         generationStrategy: "increment",
                     },
                     {
-                        name: "favorite_courts",
+                        name: "favorite",
                         type: "varchar",
                         length: "100",
                     },
@@ -27,7 +27,31 @@ export class FavoriteCourt1714130144466 implements MigrationInterface {
                         name: "court_id",
                         type: "int",
                     },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
                 ],
+                foreignKeys: [
+                    {
+                        columnNames: ["court_id", ],
+                        referencedTableName: "courts",
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
+                    },
+                    {
+                        columnNames: ["user_id", ],
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
+                    },
+                ]
             }),
             true
         );

@@ -22,6 +22,16 @@ export class UserMatch1714130716308 implements MigrationInterface {
                         name: "match_id",
                         type: "int",
                     },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
                 ],
                 foreignKeys: [
                     {
