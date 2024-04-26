@@ -2,7 +2,6 @@ import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGe
 import { Role } from "./Role";
 import { UserMatch } from "./User_match";
 import { FavoriteCourt } from "./Favorite_court";
-import { Match } from "./Match";
 
 @Entity('users')
 export class User extends BaseEntity{
@@ -39,8 +38,4 @@ export class User extends BaseEntity{
 
     @OneToMany(() => FavoriteCourt, (favoriteCourt) => favoriteCourt.user)
     favoriteCourts!: FavoriteCourt[]
-
-    @OneToMany(() => Match, (match) => match.user)
-    matches!: Match[]
-
 }

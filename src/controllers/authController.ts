@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from "bcrypt";
 import { User } from '../models/User';
+import jwt from "jsonwebtoken";
 
 //CREAR USUARIO
 export const register = async (req: Request, res: Response) => {
@@ -61,6 +62,74 @@ export const register = async (req: Request, res: Response) => {
         res.status(500).json({
             success: false,
             message: "User cant be register",
+            error: error
+        })
+    }
+}
+
+//LOGIN
+export const login = async (req: Request, res: Response) => {
+    try {
+        const { email, password } = req.body;
+
+        //validacion
+        if (!email || !password) {
+            return res.status(404).json({
+                success: false,
+                message: "Email and password are needed"
+            })
+        }
+
+        const user = await User.findOne({
+            where: {
+                email: email
+            },
+            relations: ['role'],
+            select: ['id', 'name', 'nickname', 'email', 'password', 'role'],
+
+        })
+
+        if (!user) {
+            return res.status(400).json({
+                success: false,
+                message: "Email or password invalid"
+            })
+        }
+
+        const isValidPassword = bcrypt.compareSync(password, user.password)
+
+        if (!isValidPassword) {
+            return res.status(400).json({
+                success: false,
+                message: "Email or password invalid",
+            })
+        }
+
+        //crear token
+        const token = jwt.sign(
+            {
+                userId: user.id,
+                roleName: user.role.name,
+                name: user.name,
+            },
+            process.env.JWT_SECRET as string,
+            {
+                expiresIn: "4h"
+            }
+        )
+
+        res.status(201).json({
+            success: true,
+            message: "User logged",
+            token: token
+
+        })
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "User cant be logged",
             error: error
         })
     }

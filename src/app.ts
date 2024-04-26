@@ -1,5 +1,5 @@
 import express from "express";
-import { register } from "./controllers/authController";
+import { login, register } from "./controllers/authController";
 
 
 export const app = express();
@@ -17,3 +17,4 @@ app.get('/healthy', (req, res) => {
 
 //auth routes
 app.post('/api/auth/register', register);
+app.post('/api/auth/login', login);
