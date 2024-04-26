@@ -1,0 +1,75 @@
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
+
+export class User1714129322306 implements MigrationInterface {
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.createTable(
+            new Table({
+                name: "users",
+                columns: [
+                    {
+                        name: "id",
+                        type: "int",
+                        isPrimary: true,
+                        isGenerated: true,
+                        generationStrategy: "increment",
+                    },
+                    {
+                        name: "name",
+                        type: "varchar",
+                        length: "50",
+                        isNullable: false,
+                    },
+                    {
+                        name: "email",
+                        type: "varchar",
+                        length: "50",
+                        isNullable: false,
+                    },
+                    {
+                        name: "password",
+                        type: "varchar",
+                        length: "50",
+                        isNullable: false,
+                    },
+                    {
+                        name: "favorite_position",
+                        type: "varchar",
+                        length: "50",
+                        isNullable: true,
+                    },
+                    {
+                        name: "prsentation",
+                        type: "text",
+                        length: "255",
+                        isNullable: true,
+                    },
+                    {
+                        name: "image",
+                        type: "varchar",
+                        length: "100",
+                        isNullable: true,
+                    },
+                    {
+                        name: "role_id",
+                        type: "int",
+                    },
+                ],
+                foreignKeys: [
+                    {
+                        columnNames: ["role_id", ],
+                        referencedTableName: "roles",
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
+                    }
+                ]
+            }),
+            true
+        );
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable("users");
+    }
+
+}

@@ -2,6 +2,14 @@ import "reflect-metadata"
 import "dotenv/config"
 import { DataSource } from "typeorm"
 
+import {Role1714129148730} from "./migrations/1714129148730-role"
+import {User1714129322306} from "./migrations/1714129322306-user"
+import {Court1714129641445} from "./migrations/1714129641445-court"
+import {FavoriteCourt1714130144466} from "./migrations/1714130144466-favorite_court"
+import {Match1714130426227} from "./migrations/1714130426227-match"
+import {UserMatch1714130716308} from "./migrations/1714130716308-user_match"
+
+
 export const AppDataSource = new DataSource({
     type: "mysql",
     host: process.env.DB_HOST || "localhost",
@@ -13,7 +21,13 @@ export const AppDataSource = new DataSource({
 
     ],
     migrations: [
-
+        Role1714129148730,
+        User1714129322306,
+        Court1714129641445,
+        FavoriteCourt1714130144466,
+        Match1714130426227,
+        UserMatch1714130716308,
+        
     ],
     synchronize: false,
     logging: false,
