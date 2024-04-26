@@ -38,7 +38,7 @@ export const courtSeedDatabase = async () => {
 
 
       console.log('---------------------------');
-      console.log('Users successfully saved');    
+      console.log('Courts successfully saved');    
       console.log('---------------------------');    
     } catch (error) {
       console.log(error);

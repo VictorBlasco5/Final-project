@@ -7,6 +7,7 @@ export const userSeedDatabase = async () => {
       
       const user1 = User.create({
         name: "User",
+        nickname: "User",
         email: "user@user.com",
         password: "$2b$08$ZEsDerEChlJlGCodM7tIYO1Jtp6uXfajfZNByeNQ1rUBnlI3ovIMm",
         favorite_position: "Pívot",
@@ -18,6 +19,7 @@ export const userSeedDatabase = async () => {
 
       const user2 = User.create({
         name: "Admin",
+        nickname: "Admin",
         email: "admin@admin.com",
         password: "$2b$08$ZEsDerEChlJlGCodM7tIYO1Jtp6uXfajfZNByeNQ1rUBnlI3ovIMm",
         favorite_position: "Alero",
@@ -29,6 +31,7 @@ export const userSeedDatabase = async () => {
 
       const user3 = User.create({
         name: "Laura",
+        nickname: "Laura",
         email: "laura@laura.com",
         password: "$2b$08$ZEsDerEChlJlGCodM7tIYO1Jtp6uXfajfZNByeNQ1rUBnlI3ovIMm",
         favorite_position: "Base",
@@ -40,6 +43,7 @@ export const userSeedDatabase = async () => {
 
       const user4 = User.create({
         name: "Víctor",
+        nickname: "Víctor",
         email: "victor@victor.com",
         password: "$2b$08$ZEsDerEChlJlGCodM7tIYO1Jtp6uXfajfZNByeNQ1rUBnlI3ovIMm",
         favorite_position: "Pívot",
@@ -51,6 +55,7 @@ export const userSeedDatabase = async () => {
 
       const user5 = User.create({
         name: "David",
+        nickname: "David",
         email: "david@david.com",
         password: "$2b$08$ZEsDerEChlJlGCodM7tIYO1Jtp6uXfajfZNByeNQ1rUBnlI3ovIMm",
         favorite_position: "Alero",
