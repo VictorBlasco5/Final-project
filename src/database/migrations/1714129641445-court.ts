@@ -17,13 +17,13 @@ export class Court1714129641445 implements MigrationInterface {
                     {
                         name: "name",
                         type: "varchar",
-                        length: "40",
+                        length: "50",
                         isNullable: false,
                     },
                     {
                         name: "direction",
                         type: "varchar",
-                        length: "50",
+                        length: "255",
                         isNullable: false,
                     },
                     {

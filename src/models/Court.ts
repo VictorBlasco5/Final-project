@@ -15,8 +15,8 @@ export class Court extends BaseEntity{
     direction!:string
 
     @OneToMany(() => Match, (match) => match.court)
-    match!: Match[]
+    matches!: Match[]
 
     @OneToMany(() => FavoriteCourt, (favoriteCourt) => favoriteCourt.court)
-    favoriteCourt!: FavoriteCourt[]
+    favoriteCourts!: FavoriteCourt[]
 }

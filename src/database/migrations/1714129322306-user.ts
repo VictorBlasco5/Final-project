@@ -29,7 +29,7 @@ export class User1714129322306 implements MigrationInterface {
                     {
                         name: "password",
                         type: "varchar",
-                        length: "50",
+                        length: "255",
                         isNullable: false,
                     },
                     {
@@ -39,7 +39,7 @@ export class User1714129322306 implements MigrationInterface {
                         isNullable: true,
                     },
                     {
-                        name: "prsentation",
+                        name: "presentation",
                         type: "text",
                         length: "255",
                         isNullable: true,
@@ -47,7 +47,7 @@ export class User1714129322306 implements MigrationInterface {
                     {
                         name: "image",
                         type: "varchar",
-                        length: "100",
+                        length: "255",
                         isNullable: true,
                     },
                     {

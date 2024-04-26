@@ -2,6 +2,7 @@ import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGe
 import { Role } from "./Role";
 import { UserMatch } from "./User_match";
 import { FavoriteCourt } from "./Favorite_court";
+import { Match } from "./Match";
 
 @Entity('users')
 export class User extends BaseEntity{
@@ -9,13 +10,13 @@ export class User extends BaseEntity{
     id!: number
 
     @Column({name: 'name'})
-    first_name!: string
+    name!: string
 
     @Column({name: 'email'})
     email!: string
 
     @Column({name: 'password', select: false})
-    password_hash!: string
+    password!: string
 
     @Column({name: 'favorite_position', nullable: true})
     favorite_position!: string
@@ -35,4 +36,8 @@ export class User extends BaseEntity{
 
     @OneToMany(() => FavoriteCourt, (favoriteCourt) => favoriteCourt.user)
     favoriteCourts!: FavoriteCourt[]
+
+    @OneToMany(() => Match, (match) => match.user)
+    matches!: Match[]
+
 }

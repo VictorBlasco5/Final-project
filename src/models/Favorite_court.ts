@@ -14,7 +14,7 @@ export class FavoriteCourt extends BaseEntity{
     @JoinColumn ({ name: "user_id" })
     user!: User;
 
-    @ManyToOne(() => Court, (court) => court.favoriteCourt)
+    @ManyToOne(() => Court, (court) => court.favoriteCourts)
     @JoinColumn ({ name: "court_id" })
     court!: Court;
 
