@@ -29,3 +29,31 @@ export const createCourt = async (req:Request, res: Response) => {
         })
     }
 }
+
+export const getCourts = async (req:Request, res:Response) => {
+    try {
+
+        const courts = await Court.find({
+            select: {
+                id: true,
+                name: true,
+                direction: true
+            }
+        })
+
+        res.status(200).json(
+            {
+                succes: true,
+                message: "Court retieved successfully",
+                data: courts
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Courts cant be retrieved",
+            error: error
+        })
+    }
+}
