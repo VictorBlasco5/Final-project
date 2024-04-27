@@ -3,7 +3,7 @@ import { login, register } from "./controllers/authController";
 import { deleteUser, getUserProfile, getUsers, updateProfile } from "./controllers/userController";
 import { auth } from "./middlewares/auth";
 import { isSuperAdmin } from "./middlewares/isSuperAdmin";
-import { createCourt, getCourts, updateCourt } from "./controllers/courtController";
+import { createCourt, deleteCourt, getCourts, updateCourt } from "./controllers/courtController";
 
 
 export const app = express();
@@ -33,3 +33,4 @@ app.delete('/api/users/:id',auth, isSuperAdmin, deleteUser)
 app.post('/api/courts',auth, isSuperAdmin, createCourt)
 app.get('/api/courts',auth, getCourts)
 app.put('/api/courts/:id',auth, isSuperAdmin, updateCourt)
+app.delete('/api/courts/:id',auth, isSuperAdmin, deleteCourt)
