@@ -1,6 +1,6 @@
 import express from "express";
 import { login, register } from "./controllers/authController";
-import { getUserProfile, getUsers, updateProfile } from "./controllers/userController";
+import { deleteUser, getUserProfile, getUsers, updateProfile } from "./controllers/userController";
 import { auth } from "./middlewares/auth";
 import { isSuperAdmin } from "./middlewares/isSuperAdmin";
 
@@ -26,3 +26,4 @@ app.post('/api/auth/login', login);
 app.get('/api/users/profile', auth, getUserProfile);
 app.get('/api/users',auth, isSuperAdmin, getUsers);
 app.put('/api/users/profile',auth, updateProfile);
+app.delete('/api/users/:id',auth, isSuperAdmin, deleteUser)

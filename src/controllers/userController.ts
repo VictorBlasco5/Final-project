@@ -129,3 +129,38 @@ export const updateProfile = async (req:Request, res:Response) => {
         })
     }
 }
+
+//ELIMINAR USUARIO
+export const deleteUser = async (req: Request, res: Response) => {
+    try {
+        const userId = req.params.id;
+
+        const userToRemove: any = await User.findOneBy({
+            id: parseInt(userId),
+        })
+
+        if (!userToRemove) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            })
+        }
+
+        const userDelete = await User.remove(userToRemove)
+
+        res.status(200).json(
+            {
+                succes: true,
+                message: "User delete",
+                data: userDelete
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Cant delete user",
+            error: error
+        })
+    }
+}
