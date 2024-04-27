@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Role } from "./Role";
 import { UserMatch } from "./User_match";
 import { FavoriteCourt } from "./Favorite_court";
@@ -28,6 +28,9 @@ export class User extends BaseEntity{
 
     @Column({name: 'image', nullable: true})
     image!: string
+
+    @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+    updated_at!: Date;
 
     @ManyToOne(() => Role, (role) => role.users)
     @JoinColumn ({ name: "role_id" })

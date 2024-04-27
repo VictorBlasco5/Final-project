@@ -1,6 +1,6 @@
 import express from "express";
 import { login, register } from "./controllers/authController";
-import { getUserProfile, getUsers } from "./controllers/userController";
+import { getUserProfile, getUsers, updateProfile } from "./controllers/userController";
 import { auth } from "./middlewares/auth";
 import { isSuperAdmin } from "./middlewares/isSuperAdmin";
 
@@ -25,3 +25,4 @@ app.post('/api/auth/login', login);
 //user routes
 app.get('/api/users/profile', auth, getUserProfile);
 app.get('/api/users',auth, isSuperAdmin, getUsers);
+app.put('/api/users/profile',auth, updateProfile);

@@ -49,7 +49,6 @@ export const getUsers = async (req: Request, res: Response) => {
     }
 }
 
-
 //VER MI PERFIL
 export const getUserProfile = async (req: Request, res: Response) => {
     try {
@@ -78,6 +77,54 @@ export const getUserProfile = async (req: Request, res: Response) => {
         res.status(500).json({
             success: false,
             message: "User cant be retrieved",
+            error: error
+        })
+    }
+}
+
+//ACTUALIZAR MI PERFIL
+export const updateProfile = async (req:Request, res:Response) => {
+    try {
+
+        const { name, nickname, favorite_position, presentation, image} = req.body;
+
+        if (!name ) {
+            return res.status(400).json({
+                success: false,
+                message: "Name is required"
+            })
+        }
+
+        if (!nickname) {
+            return res.status(400).json({
+                success: false,
+                message: "Nickname is required"
+            })
+        }
+
+        const userUpdate = await User.update(
+            {
+                id: req.tokenData.userId
+            },
+            {
+                name: name,
+                nickname: nickname,
+                favorite_position: favorite_position,
+                presentation: presentation,
+                image: image
+            }
+        )
+
+        res.status(200).json({
+            success: true,
+            message: "User update",
+            date: userUpdate
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "User cant be update",
             error: error
         })
     }
