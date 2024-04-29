@@ -36,10 +36,6 @@ export class Match1714130426227 implements MigrationInterface {
                         type: "int",
                     },
                     {
-                        name: "user_id",
-                        type: "int",
-                    },
-                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()",
@@ -53,8 +49,8 @@ export class Match1714130426227 implements MigrationInterface {
                 ],
                 uniques: [
                     new TableUnique({
-                       name: "user_court_date_unique",
-                       columnNames: ["user_id", "court_id", "match_date"],
+                       name: "court_date_unique",
+                       columnNames: ["court_id", "match_date"],
                     }),
                  ],
                 foreignKeys: [
@@ -63,7 +59,7 @@ export class Match1714130426227 implements MigrationInterface {
                         referencedTableName: "courts",
                         referencedColumnNames: ["id"],
                         onDelete: "CASCADE"
-                    },
+                    }
                 ]
             }),
             true

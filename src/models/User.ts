@@ -1,8 +1,7 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Role } from "./Role";
 import { UserMatch } from "./User_match";
 import { FavoriteCourt } from "./Favorite_court";
-import { Match } from "./Match";
 
 @Entity('users')
 export class User extends BaseEntity{
@@ -12,7 +11,10 @@ export class User extends BaseEntity{
     @Column({name: 'name'})
     name!: string
 
-    @Column({name: 'email'})
+    @Column({name: 'nickname', unique: true})
+    nickname!: string
+
+    @Column({name: 'email', unique: true})
     email!: string
 
     @Column({name: 'password', select: false})
@@ -27,6 +29,9 @@ export class User extends BaseEntity{
     @Column({name: 'image', nullable: true})
     image!: string
 
+    @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+    updated_at!: Date;
+
     @ManyToOne(() => Role, (role) => role.users)
     @JoinColumn ({ name: "role_id" })
     role!: Role;
@@ -36,8 +41,4 @@ export class User extends BaseEntity{
 
     @OneToMany(() => FavoriteCourt, (favoriteCourt) => favoriteCourt.user)
     favoriteCourts!: FavoriteCourt[]
-
-    @OneToMany(() => Match, (match) => match.user)
-    matches!: Match[]
-
 }

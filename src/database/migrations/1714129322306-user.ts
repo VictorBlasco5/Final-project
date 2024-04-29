@@ -21,10 +21,18 @@ export class User1714129322306 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
+                        name: "nickname",
+                        type: "varchar",
+                        length: "50",
+                        isNullable: false,
+                        isUnique: true,
+                    },
+                    {
                         name: "email",
                         type: "varchar",
                         length: "50",
                         isNullable: false,
+                        isUnique: true,
                     },
                     {
                         name: "password",
@@ -67,7 +75,7 @@ export class User1714129322306 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        columnNames: ["role_id", ],
+                        columnNames: ["role_id",],
                         referencedTableName: "roles",
                         referencedColumnNames: ["id"],
                         onDelete: "CASCADE"
