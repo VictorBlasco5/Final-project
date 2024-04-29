@@ -4,9 +4,10 @@ import { deleteUser, getUserProfile, getUsers, updateProfile } from "./controlle
 import { auth } from "./middlewares/auth";
 import { isSuperAdmin } from "./middlewares/isSuperAdmin";
 import { createCourt, deleteCourt, getCourts, updateCourt } from "./controllers/courtController";
-
+import cors from "cors";
 
 export const app = express();
+app.use(cors())
 
 app.use(express.json());
 
