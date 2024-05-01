@@ -83,12 +83,12 @@ export const getUserProfile = async (req: Request, res: Response) => {
 }
 
 //ACTUALIZAR MI PERFIL
-export const updateProfile = async (req:Request, res:Response) => {
+export const updateProfile = async (req: Request, res: Response) => {
     try {
 
-        const { name, nickname, favorite_position, presentation, image} = req.body;
+        const { name, nickname, favorite_position, presentation, image } = req.body;
 
-        if (!name ) {
+        if (!name) {
             return res.status(400).json({
                 success: false,
                 message: "Name is required"
@@ -150,7 +150,7 @@ export const deleteUser = async (req: Request, res: Response) => {
 
         res.status(200).json(
             {
-                succes: true,
+                success: true,
                 message: "User delete",
                 data: userDelete
             }

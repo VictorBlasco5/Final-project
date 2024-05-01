@@ -11,7 +11,7 @@ export const getMatches = async (req: Request, res: Response) => {
 
         res.status(200).json(
             {
-                succes: true,
+                success: true,
                 message: "Matches retieved successfully",
                 data: matches,
             }
@@ -36,10 +36,10 @@ export const createMatch = async (req: Request, res: Response) => {
         newMatch.match_date = match_date;
         newMatch.court = court_id;
         await newMatch.save();
-        
+
         res.status(200).json(
             {
-                succes: true,
+                success: true,
                 message: "Match created",
                 data: newMatch
             }
@@ -49,6 +49,42 @@ export const createMatch = async (req: Request, res: Response) => {
         res.status(500).json({
             success: false,
             message: "Cant create match",
+            error: error
+        })
+    }
+}
+
+export const deleteMatch = async (req:Request, res:Response) => {
+    try{
+
+        const matchId = req.params.id
+
+        const matchDelete: any = await Match.findOneBy({
+            id: parseInt(matchId)
+        })
+
+
+        if (!matchDelete) {
+            return res.status(404).json({
+                success: false,
+                message: "Match not found"
+            })
+        }
+
+        const matchRemove = await Match.remove(matchDelete)
+
+        res.status(200).json(
+            {
+                success: true,
+                message: "Match deleted successfully",
+                data: matchRemove
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Match cant be delete",
             error: error
         })
     }
