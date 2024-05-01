@@ -56,18 +56,28 @@ export const createMatch = async (req: Request, res: Response) => {
 
 export const deleteMatch = async (req:Request, res:Response) => {
     try{
-
+        const {userId, roleName} = req.tokenData;
+        console.log(`userId: ${userId}, roleName: ${roleName}`);
         const matchId = req.params.id
-
+        const admin = roleName === 'admin';
+        console.log(`admin: ${admin}`); // Log admin status
         const matchDelete: any = await Match.findOneBy({
             id: parseInt(matchId)
         })
 
-
+        console.log(`matchDelete: ${JSON.stringify(matchDelete)}`); // Log matchDelete object
         if (!matchDelete) {
             return res.status(404).json({
                 success: false,
                 message: "Match not found"
+            })
+        }
+
+        if(userId !== matchDelete.userId && !admin){
+            console.log('Not authorized to delete match');
+            return res.status(403).json({
+                success: false,
+                message: "You are not authorized to delete this match"
             })
         }
 
