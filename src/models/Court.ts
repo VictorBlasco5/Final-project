@@ -14,6 +14,12 @@ export class Court extends BaseEntity{
     @Column({ name: 'direction' })
     direction!:string
 
+    @Column({ name: 'created_at' })
+    created_at!:string
+
+    @Column({ name: 'updated_at' })
+    updated_at!:string
+
     @OneToMany(() => Match, (match) => match.court)
     matches!: Match[]
 

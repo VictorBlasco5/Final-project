@@ -34,11 +34,6 @@ export const getCourts = async (req: Request, res: Response) => {
     try {
 
         const courts = await Court.find({
-            select: {
-                id: true,
-                name: true,
-                direction: true
-            }
         })
 
         res.status(200).json(

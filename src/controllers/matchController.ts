@@ -54,9 +54,9 @@ export const createMatch = async (req: Request, res: Response) => {
     }
 }
 
-export const deleteMatch = async (req:Request, res:Response) => {
-    try{
-        const {userId, roleName} = req.tokenData;
+export const deleteMatch = async (req: Request, res: Response) => {
+    try {
+        const { userId, roleName } = req.tokenData;
         console.log(`userId: ${userId}, roleName: ${roleName}`);
         const matchId = req.params.id
         const admin = roleName === 'admin';
@@ -73,7 +73,7 @@ export const deleteMatch = async (req:Request, res:Response) => {
             })
         }
 
-        if(userId !== matchDelete.userId && !admin){
+        if (userId !== matchDelete.userId && !admin) {
             console.log('Not authorized to delete match');
             return res.status(403).json({
                 success: false,
@@ -95,6 +95,54 @@ export const deleteMatch = async (req:Request, res:Response) => {
         res.status(500).json({
             success: false,
             message: "Match cant be delete",
+            error: error
+        })
+    }
+}
+
+export const assistanceMatch = async (req: Request, res: Response) => {
+    try {
+
+        const { userId } = req.tokenData;
+        const matchId = req.params.id;
+
+        const match = await Match.findOneBy({
+            id: parseInt(matchId)
+        });
+
+        if (!match) {
+            return res.status(404).json({
+                success: false,
+                message: "Match not found"
+            })
+        }
+       
+        const signedUpArray = match.signed_up || [];  // Obtengo el array actual del partido
+
+        if (signedUpArray.includes(userId)) {
+            return res.status(400).json({
+                success: false,
+                message: "User already signed up for this match"
+            });
+        }
+
+        signedUpArray.push(userId); 
+        const signedUpJSON = JSON.stringify(signedUpArray);  // Convierto el array a JSON 
+        match.signed_up = signedUpJSON as any   // Actualizo en DB
+        await match.save();
+
+        res.status(200).json(
+            {
+                success: true,
+                message: "Signed up successfully for match",
+                data: match
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Cant sign up for match",
             error: error
         })
     }

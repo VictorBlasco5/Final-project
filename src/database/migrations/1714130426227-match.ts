@@ -21,6 +21,10 @@ export class Match1714130426227 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
+                        name: "signed_up",
+                        type: "json",
+                    },
+                    {
                         name: "information",
                         type: "text",
                         length: "255",

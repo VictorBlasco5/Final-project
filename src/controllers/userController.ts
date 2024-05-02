@@ -29,6 +29,7 @@ export const getUsers = async (req: Request, res: Response) => {
                     presentation: true,
                     image: true,
                 },
+                relations: ['role'],
                 take: limit, //paginación para que me traiga 10 usuarios al hacer la petición.
                 skip: skip
             }
