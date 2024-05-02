@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Match } from "../models/Match";
+import { UserMatch } from "../models/User_match";
 
 
 export const getMatches = async (req: Request, res: Response) => {
@@ -142,6 +143,32 @@ export const assistanceMatch = async (req: Request, res: Response) => {
         res.status(500).json({
             success: false,
             message: "Cant sign up for match",
+            error: error
+        })
+    }
+}
+
+export const getMatchesAssistance = async (req: Request, res: Response) => {
+    try {
+
+        const { userId } = req.tokenData;
+
+        const matches = await Match.createQueryBuilder("match")
+        .where(`JSON_CONTAINS(match.signed_up, :userId)`, { userId: JSON.stringify(userId) })
+        .getMany();
+
+        res.status(200).json(
+            {
+                success: true,
+                message: "Matches retieved successfully",
+                data: matches
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Matches cant be retrieved",
             error: error
         })
     }
