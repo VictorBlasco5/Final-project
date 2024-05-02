@@ -119,14 +119,13 @@ export const assistanceMatch = async (req: Request, res: Response) => {
        
         const signedUpArray = match.signed_up || [];  // Obtengo el array actual del partido
 
-        if (signedUpArray.includes(userId)) {
-            return res.status(400).json({
-                success: false,
-                message: "User already signed up for this match"
-            });
+        const addRemove = signedUpArray.indexOf(userId);
+        if (addRemove !== -1) {
+            signedUpArray.splice(addRemove, 1);
+        } else {
+            signedUpArray.push(userId);
         }
 
-        signedUpArray.push(userId); 
         const signedUpJSON = JSON.stringify(signedUpArray);  // Convierto el array a JSON 
         match.signed_up = signedUpJSON as any   // Actualizo en DB
         await match.save();
@@ -134,7 +133,7 @@ export const assistanceMatch = async (req: Request, res: Response) => {
         res.status(200).json(
             {
                 success: true,
-                message: "Signed up successfully for match",
+                message: addRemove !== -1 ? "Deleted successfully for match" : "Signed up successfully for match",
                 data: match
             }
         )
