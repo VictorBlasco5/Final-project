@@ -121,17 +121,18 @@ export const assistanceMatch = async (req: Request, res: Response) => {
         const signedUpArray = match.signed_up || [];  // Obtengo el array actual del partido
         const numberPlayers = match.number_players;
 
-        if(signedUpArray.length === numberPlayers ) {
-            return res.status(400).json({
-                success:false,
-                message: "The match is complete"
-            })
-        }
+        
 
         const addRemove = signedUpArray.indexOf(userId);
         if (addRemove !== -1) {
             signedUpArray.splice(addRemove, 1);
         } else {
+            if (signedUpArray.length === numberPlayers) {
+                return res.status(400).json({
+                    success: false,
+                    message: "The match is complete"
+                })
+            }
             signedUpArray.push(userId);
         }
 
@@ -162,8 +163,10 @@ export const getMatchesAssistance = async (req: Request, res: Response) => {
         const { userId } = req.tokenData;
 
         const matches = await Match.createQueryBuilder("match")
+            .innerJoinAndSelect("match.court", "court")
             .where(`JSON_CONTAINS(match.signed_up, :userId)`, { userId: JSON.stringify(userId) })
             .getMany();
+            
 
         res.status(200).json(
             {
