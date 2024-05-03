@@ -8,7 +8,7 @@ export class Match extends BaseEntity{
     id!: number
 
     @Column({ name: 'number_players' })
-    number_players!: string
+    number_players!: number
 
     @Column ({ name: 'signed_up', type: 'integer', array: true, default: []})
     signed_up!: number[]
