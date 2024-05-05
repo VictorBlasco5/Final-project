@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Match } from "../models/Match";
 import { UserMatch } from "../models/User_match";
+import { User } from "../models/User";
 
 
 export const getMatches = async (req: Request, res: Response) => {
@@ -30,6 +31,7 @@ export const getMatches = async (req: Request, res: Response) => {
 export const createMatch = async (req: Request, res: Response) => {
     try {
         const { number_players, information, match_date, court_id } = req.body;
+        const userId = req.tokenData.userId;
 
         const newMatch = new Match();
         newMatch.number_players = number_players;
@@ -37,6 +39,13 @@ export const createMatch = async (req: Request, res: Response) => {
         newMatch.match_date = match_date;
         newMatch.court = court_id;
         await newMatch.save();
+
+        const userMatch = new UserMatch();
+        const user = new User();
+        user.id = userId;
+        userMatch.user = user;
+        userMatch.match = newMatch;
+        await userMatch.save();
 
         res.status(200).json(
             {
