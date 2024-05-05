@@ -117,11 +117,11 @@ export const assistanceMatch = async (req: Request, res: Response) => {
                 message: "Match not found"
             })
         }
- 
+
         const signedUpArray = match.signed_up || [];  // Obtengo el array actual del partido
         const numberPlayers = match.number_players;
 
-        
+
 
         const addRemove = signedUpArray.indexOf(userId);
         if (addRemove !== -1) {
@@ -166,7 +166,35 @@ export const getMatchesAssistance = async (req: Request, res: Response) => {
             .innerJoinAndSelect("match.court", "court")
             .where(`JSON_CONTAINS(match.signed_up, :userId)`, { userId: JSON.stringify(userId) })
             .getMany();
-            
+
+
+        res.status(200).json(
+            {
+                success: true,
+                message: "Matches retieved successfully",
+                data: matches
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Matches cant be retrieved",
+            error: error
+        })
+    }
+}
+
+export const getMatchesByCourt = async (req: Request, res: Response) => {
+    try {
+
+        const courtId = req.params.id;
+
+        const matches = await Match.find({
+            where: {
+                court: { id: parseInt(courtId) }
+            }
+        });
 
         res.status(200).json(
             {

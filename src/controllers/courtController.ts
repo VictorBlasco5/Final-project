@@ -8,6 +8,17 @@ export const createCourt = async (req: Request, res: Response) => {
         const name = req.body.name;
         const direction = req.body.direction;
 
+        const courtExist = await Court.findOneBy({
+            name: name
+        })
+
+        if (courtExist) {
+            return res.status(400).json({
+                success: false,
+                message: "Court already exist"
+            })
+        }
+
         const newCourt = await Court.create({
             name: name,
             direction: direction
