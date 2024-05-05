@@ -38,9 +38,14 @@ export class Match1714130426227 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
+                        name: "user_id",
+                        type: "int",
+                    },
+                    {
                         name: "court_id",
                         type: "int",
                     },
+                    
                     {
                         name: "created_at",
                         type: "timestamp",
@@ -60,6 +65,12 @@ export class Match1714130426227 implements MigrationInterface {
                     }),
                  ],
                 foreignKeys: [
+                    {
+                        columnNames: ["user_id",],
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
+                    },
                     {
                         columnNames: ["court_id", ],
                         referencedTableName: "courts",

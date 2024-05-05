@@ -1,6 +1,7 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Court } from "./Court";
 import { UserMatch } from "./User_match";
+import { User } from "./User";
 
 @Entity('matches')
 export class Match extends BaseEntity{
@@ -24,6 +25,10 @@ export class Match extends BaseEntity{
 
     @Column({ name: 'updated_at' })
     updated_at!:string
+
+    @ManyToOne(() => User, (user) => user.matches)
+    @JoinColumn ({ name: "user_id" })
+    user!: User;
 
     @ManyToOne(() => Court, (court) => court.matches)
     @JoinColumn ({ name: "court_id" })
