@@ -74,9 +74,16 @@ export const deleteMatch = async (req: Request, res: Response) => {
         const matchId = req.params.id
         const admin = roleName === 'admin';
         console.log(`admin: ${admin}`); // Log admin status
-        const matchDelete: any = await Match.findOneBy({
-            id: parseInt(matchId)
+        const matchDelete: any = await Match.findOne({
+            where: { id: parseInt(matchId) },
+            relations: ["user"],
         })
+
+        // const matchDelete = await Match.createQueryBuilder("match")
+        //     .leftJoinAndSelect("match.user", "user")
+        //     .where("match.id = :id", { id: parseInt(matchId) })
+        //     .select(["match", "user.id"])
+        //     .getOne();
 
         console.log(`matchDelete: ${JSON.stringify(matchDelete)}`); // Log matchDelete object
         if (!matchDelete) {
@@ -86,7 +93,7 @@ export const deleteMatch = async (req: Request, res: Response) => {
             })
         }
 
-        if (userId !== matchDelete.userId && !admin) {
+        if (matchDelete.user.id !== userId && !admin) {
             console.log('Not authorized to delete match');
             return res.status(403).json({
                 success: false,
@@ -94,13 +101,13 @@ export const deleteMatch = async (req: Request, res: Response) => {
             })
         }
 
-        const matchRemove = await Match.remove(matchDelete)
+        await Match.remove(matchDelete)
 
         res.status(200).json(
             {
                 success: true,
                 message: "Match deleted successfully",
-                data: matchRemove
+                data: matchDelete
             }
         )
 
