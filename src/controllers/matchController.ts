@@ -70,11 +70,10 @@ export const createMatch = async (req: Request, res: Response) => {
 export const deleteMatch = async (req: Request, res: Response) => {
     try {
         const { userId, roleName } = req.tokenData;
-        console.log(`userId: ${userId}, roleName: ${roleName}`);
         const matchId = req.params.id
         const admin = roleName === 'admin';
-        console.log(`admin: ${admin}`); // Log admin status
-        const matchDelete: any = await Match.findOne({
+
+        const matchDelete = await Match.findOne({
             where: { id: parseInt(matchId) },
             relations: ["user"],
         })
@@ -85,7 +84,6 @@ export const deleteMatch = async (req: Request, res: Response) => {
         //     .select(["match", "user.id"])
         //     .getOne();
 
-        console.log(`matchDelete: ${JSON.stringify(matchDelete)}`); // Log matchDelete object
         if (!matchDelete) {
             return res.status(404).json({
                 success: false,
@@ -94,7 +92,6 @@ export const deleteMatch = async (req: Request, res: Response) => {
         }
 
         if (matchDelete.user.id !== userId && !admin) {
-            console.log('Not authorized to delete match');
             return res.status(403).json({
                 success: false,
                 message: "You are not authorized to delete this match"
@@ -259,3 +256,65 @@ export const getMyMatches = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const updateMatch = async (req: Request, res: Response) => {
+    try {
+        const matchId = req.params.id;
+        const userId = req.tokenData.userId;
+        const { number_players, information, match_date, court_id } = req.body;
+
+        if (!number_players || !information || !match_date || !court_id) {
+            return res.status(400).json({
+                success: false,
+                message: "All fields are required"
+            })
+        }
+
+        const updateMatch = await Match.findOne({
+            where: { id: parseInt(matchId) },
+            relations: ["user"],
+        })
+
+        if (!matchId) {
+            return res.status(404).json({
+                success: false,
+                message: "Match not found"
+            })
+        }
+
+        await Match.update(
+            {
+                id: parseInt(matchId)
+            },
+            {
+                number_players: number_players,
+                information: information,
+                match_date: match_date,
+                court: court_id
+            }
+        )
+
+        if (updateMatch?.user.id !== userId) {
+            return res.status(403).json({
+                success: false,
+                message: "You cant update this match"
+            })
+        }
+
+        res.status(200).json(
+            {
+                success: true,
+                message: "Match updated successfully",
+                data: updateMatch
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Match cant be update",
+            error: error
+        })
+    }
+}
+
