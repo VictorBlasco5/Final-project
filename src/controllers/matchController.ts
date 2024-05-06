@@ -34,10 +34,13 @@ export const createMatch = async (req: Request, res: Response) => {
         const userId = req.tokenData.userId;
 
         const newMatch = new Match();
+        const users = new User();
         newMatch.number_players = number_players;
         newMatch.information = information;
         newMatch.match_date = match_date;
         newMatch.court = court_id;
+        users.id = userId;
+        newMatch.user = users;
         await newMatch.save();
 
         const userMatch = new UserMatch();
