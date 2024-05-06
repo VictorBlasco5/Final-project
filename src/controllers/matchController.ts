@@ -231,3 +231,31 @@ export const getMatchesByCourt = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getMyMatches = async (req: Request, res: Response) => {
+    try {
+
+        const { userId } = req.tokenData;
+
+        const matches = await Match.find({
+            where: {
+                user: { id: userId }
+            }
+        });
+
+        res.status(200).json(
+            {
+                success: true,
+                message: "Matches retieved successfully",
+                data: matches
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Matches cant be retrieved",
+            error: error
+        })
+    }
+}

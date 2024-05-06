@@ -5,7 +5,7 @@ import { auth } from "./middlewares/auth";
 import { isSuperAdmin } from "./middlewares/isSuperAdmin";
 import { createCourt, deleteCourt, getCourts, updateCourt } from "./controllers/courtController";
 import cors from "cors";
-import { assistanceMatch, createMatch, deleteMatch, getMatches, getMatchesAssistance, getMatchesByCourt } from "./controllers/matchController";
+import { assistanceMatch, createMatch, deleteMatch, getMatches, getMatchesAssistance, getMatchesByCourt, getMyMatches } from "./controllers/matchController";
 
 export const app = express();
 app.use(cors())
@@ -44,3 +44,4 @@ app.post('/api/matches',auth, createMatch)
 app.delete('/api/matches/:id',auth, deleteMatch)
 app.put('/api/matches/assistance/:id',auth, assistanceMatch)
 app.get('/api/matches/court/:id',auth, getMatchesByCourt)
+app.get('/api/matches/own',auth, getMyMatches)
