@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Match } from "./Match";
 import { FavoriteCourt } from "./Favorite_court";
 
@@ -14,11 +14,8 @@ export class Court extends BaseEntity{
     @Column({ name: 'direction' })
     direction!:string
 
-    @Column({ name: 'created_at' })
-    created_at!:string
-
-    @Column({ name: 'updated_at' })
-    updated_at!:string
+    @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+    updated_at!: Date;
 
     @OneToMany(() => Match, (match) => match.court)
     matches!: Match[]

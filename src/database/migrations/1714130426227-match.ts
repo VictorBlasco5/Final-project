@@ -66,13 +66,13 @@ export class Match1714130426227 implements MigrationInterface {
                  ],
                 foreignKeys: [
                     {
-                        columnNames: ["user_id",],
+                        columnNames: ["user_id"],
                         referencedTableName: "users",
                         referencedColumnNames: ["id"],
                         onDelete: "CASCADE"
                     },
                     {
-                        columnNames: ["court_id", ],
+                        columnNames: ["court_id"],
                         referencedTableName: "courts",
                         referencedColumnNames: ["id"],
                         onDelete: "CASCADE"
