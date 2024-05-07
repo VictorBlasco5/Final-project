@@ -32,7 +32,7 @@ export const userMatchSeedDatabase = async () => {
         await court4.save();
 
         const court5 = UserMatch.create({
-            user: {id: 2},
+            user: {id: 3},
             match: {id: 2}
         });
         await court5.save();

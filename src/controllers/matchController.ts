@@ -237,7 +237,8 @@ export const getMyMatches = async (req: Request, res: Response) => {
         const matches = await Match.find({
             where: {
                 user: { id: userId }
-            }
+            },
+            relations: ["court"]
         });
 
         res.status(200).json(

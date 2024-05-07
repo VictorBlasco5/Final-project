@@ -9,7 +9,7 @@ export const matchSeedDatabase = async () => {
 
         const match1 = new Match();
         match1.number_players = 6;
-        match1.signed_up = JSON.stringify([1, 2, 3, 4, 5]) as any;
+        match1.signed_up = JSON.stringify([1, 3, 4, 5]) as any;
         match1.information = "Partido de amigos 1";
         match1.match_date = "2024-05-20 12:30:00";
         const court1 = new Court()
@@ -22,7 +22,7 @@ export const matchSeedDatabase = async () => {
 
         const match2 = new Match();
         match2.number_players = 4;
-        match2.signed_up = JSON.stringify([1, 2, 3, 4]) as any;
+        match2.signed_up = JSON.stringify([1, 3, 4]) as any;
         match2.information = "Partido de amigos 2";
         match2.match_date = "2024-05-21 16:45:00";
         const court2 = new Court()
@@ -48,7 +48,7 @@ export const matchSeedDatabase = async () => {
 
         const match4 = new Match();
         match4.number_players = 6;
-        match4.signed_up = JSON.stringify([1, 2, 3]) as any;
+        match4.signed_up = JSON.stringify([1, 3]) as any;
         match4.information = "Partido de amigos 4";
         match4.match_date = "2024-05-23 18:00:00";
         const court4 = new Court()
@@ -61,7 +61,7 @@ export const matchSeedDatabase = async () => {
 
         const match5 = new Match();
         match5.number_players = 4;
-        match5.signed_up = JSON.stringify([1, 2]) as any;
+        match5.signed_up = JSON.stringify([1, 5]) as any;
         match5.information = "Partido de amigos 5";
         match5.match_date = "2024-05-24 10:00:00";
         const court5 = new Court()
