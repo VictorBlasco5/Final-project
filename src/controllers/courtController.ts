@@ -8,6 +8,17 @@ export const createCourt = async (req: Request, res: Response) => {
         const name = req.body.name;
         const direction = req.body.direction;
 
+        const courtExist = await Court.findOneBy({
+            name: name
+        })
+
+        if (courtExist) {
+            return res.status(400).json({
+                success: false,
+                message: "Court already exist"
+            })
+        }
+
         const newCourt = await Court.create({
             name: name,
             direction: direction
@@ -15,7 +26,7 @@ export const createCourt = async (req: Request, res: Response) => {
 
         res.status(200).json(
             {
-                succes: true,
+                success: true,
                 message: "Court created",
                 data: newCourt
             }
@@ -34,16 +45,11 @@ export const getCourts = async (req: Request, res: Response) => {
     try {
 
         const courts = await Court.find({
-            select: {
-                id: true,
-                name: true,
-                direction: true
-            }
         })
 
         res.status(200).json(
             {
-                succes: true,
+                success: true,
                 message: "Court retieved successfully",
                 data: courts
             }
@@ -91,7 +97,7 @@ export const updateCourt = async (req: Request, res: Response) => {
 
         res.status(200).json(
             {
-                succes: true,
+                success: true,
                 message: "Court updated successfully",
                 data: courtUpdate
             }
@@ -106,7 +112,7 @@ export const updateCourt = async (req: Request, res: Response) => {
     }
 }
 
-export const deleteCourt = async (req:Request, res:Response) => {
+export const deleteCourt = async (req: Request, res: Response) => {
     try {
 
         const courtId = req.params.id
@@ -115,7 +121,7 @@ export const deleteCourt = async (req:Request, res:Response) => {
             id: parseInt(courtId)
         })
 
-        
+
         if (!courtDelete) {
             return res.status(404).json({
                 success: false,
@@ -124,10 +130,10 @@ export const deleteCourt = async (req:Request, res:Response) => {
         }
 
         const courtRemove = await Court.remove(courtDelete)
-        
+
         res.status(200).json(
             {
-                succes: true,
+                success: true,
                 message: "Court deleted successfully",
                 data: courtRemove
             }

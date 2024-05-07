@@ -12,7 +12,7 @@ export const register = async (req: Request, res: Response) => {
         //validacion contraseña
         if (password.length < 5 || password.length > 12) {
             return res.status(400).json({
-                succes: false,
+                success: false,
                 message: "Password must be between 5 and 12 characters"
             })
         }
@@ -114,7 +114,7 @@ export const login = async (req: Request, res: Response) => {
             },
             process.env.JWT_SECRET as string,
             {
-                expiresIn: "4h"
+                expiresIn: "24h"
             }
         )
 
