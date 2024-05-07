@@ -201,3 +201,33 @@ export const favoriteCourts = async (req: Request, res: Response) => {
         });
     }
 };
+
+export const getMyFavoriteCourts = async (req: Request, res: Response) => {
+    try {
+
+        const userId = req.tokenData.userId;
+
+        const favoriteCourts = await FavoriteCourt.find({
+            where: {
+                user: { id: userId }
+            },
+            relations: ["court"]
+        });
+
+
+        res.status(200).json(
+            {
+                success: true,
+                message: "Court retieved successfully",
+                data: favoriteCourts
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Courts cant be retrieved",
+            error: error
+        })
+    }
+}

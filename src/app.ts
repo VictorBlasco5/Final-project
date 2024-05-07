@@ -3,7 +3,7 @@ import { login, register } from "./controllers/authController";
 import { deleteUser, getUserProfile, getUsers, updateProfile } from "./controllers/userController";
 import { auth } from "./middlewares/auth";
 import { isSuperAdmin } from "./middlewares/isSuperAdmin";
-import { createCourt, deleteCourt, favoriteCourts, getCourts, updateCourt } from "./controllers/courtController";
+import { createCourt, deleteCourt, favoriteCourts, getCourts, getMyFavoriteCourts, updateCourt } from "./controllers/courtController";
 import cors from "cors";
 import { assistanceMatch, createMatch, deleteMatch, getMatches, getMatchesAssistance, getMatchesByCourt, getMyMatches, updateMatch } from "./controllers/matchController";
 
@@ -26,7 +26,7 @@ app.post('/api/auth/register', register);
 app.post('/api/auth/login', login);
 
 //user routes
-app.get('/api/users/profile', auth, isSuperAdmin, getUserProfile);
+app.get('/api/users/profile', auth, getUserProfile);
 app.get('/api/users',auth, isSuperAdmin, getUsers);
 app.put('/api/users/profile',auth, updateProfile);
 app.delete('/api/users/:id',auth, isSuperAdmin, deleteUser)
@@ -37,6 +37,7 @@ app.get('/api/courts',auth, getCourts)
 app.put('/api/courts/:id',auth, isSuperAdmin, updateCourt)
 app.delete('/api/courts/:id',auth, isSuperAdmin, deleteCourt)
 app.put('/api/courts/fav/:id', auth, favoriteCourts)
+app.get('/api/courts/fav',auth, getMyFavoriteCourts)
 
 //match routes
 app.get('/api/matches',auth, getMatches)
