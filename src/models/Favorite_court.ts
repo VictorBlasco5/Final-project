@@ -7,8 +7,8 @@ export class FavoriteCourt extends BaseEntity{
     @PrimaryGeneratedColumn()
     id!: number
 
-    @Column({name: 'favorite'})
-    favorite!: string
+    @Column({name: 'name'})
+    name!: string
 
     @ManyToOne(() => User, (user) => user.favoriteCourts)
     @JoinColumn ({ name: "user_id" })

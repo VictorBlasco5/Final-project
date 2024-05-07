@@ -15,7 +15,7 @@ export class FavoriteCourt1714130144466 implements MigrationInterface {
                         generationStrategy: "increment",
                     },
                     {
-                        name: "favorite",
+                        name: "name",
                         type: "varchar",
                         length: "100",
                     },

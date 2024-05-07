@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { Court } from "../models/Court";
+import { FavoriteCourt } from "../models/Favorite_court";
+import { User } from "../models/User";
 
 
 export const createCourt = async (req: Request, res: Response) => {
@@ -147,3 +149,55 @@ export const deleteCourt = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const favoriteCourts = async (req: Request, res: Response) => {
+    try {
+        const userId = req.tokenData.userId;
+        const courtId = parseInt(req.params.id);
+
+        const court = await Court.findOne({ where: { id: courtId } });
+        if (!court) {
+            return res.status(404).json({
+                success: false,
+                message: "Court not found"
+            });
+        }
+        
+        let favoriteCourt = await FavoriteCourt.findOne({
+            where: {
+                user: { id: userId },
+                court: { id: courtId }
+            }
+        });
+
+        if (!favoriteCourt) {
+            
+            favoriteCourt = new FavoriteCourt();
+            favoriteCourt.user = { id: userId } as User;
+            favoriteCourt.court = { id: courtId } as Court;
+            favoriteCourt.name = court.name;
+        } else {
+            await favoriteCourt.remove();
+            return res.status(200).json({
+                success: true,
+                message: "Removed from favorites successfully",
+                data: favoriteCourt
+            });
+        }
+
+        await favoriteCourt.save();
+
+        return res.status(200).json({
+            success: true,
+            message:  "Added to favorites successfully",
+            data: favoriteCourt
+        });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({
+            success: false,
+            message: "Couldn't update favorites",
+            error: error
+        });
+    }
+};
