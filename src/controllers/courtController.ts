@@ -3,7 +3,7 @@ import { Court } from "../models/Court";
 import { FavoriteCourt } from "../models/Favorite_court";
 import { User } from "../models/User";
 
-
+//CREAR PISTAS
 export const createCourt = async (req: Request, res: Response) => {
     try {
 
@@ -43,6 +43,7 @@ export const createCourt = async (req: Request, res: Response) => {
     }
 }
 
+//OBTENER PISTAS
 export const getCourts = async (req: Request, res: Response) => {
     try {
 
@@ -66,6 +67,7 @@ export const getCourts = async (req: Request, res: Response) => {
     }
 }
 
+//ACTUALIZAR PISTAS
 export const updateCourt = async (req: Request, res: Response) => {
     try {
 
@@ -114,6 +116,7 @@ export const updateCourt = async (req: Request, res: Response) => {
     }
 }
 
+//ELIMINAR PISTAS
 export const deleteCourt = async (req: Request, res: Response) => {
     try {
 
@@ -150,6 +153,7 @@ export const deleteCourt = async (req: Request, res: Response) => {
     }
 }
 
+//AÑADIR PISTA A FAVORITAS
 export const favoriteCourts = async (req: Request, res: Response) => {
     try {
         const userId = req.tokenData.userId;
@@ -202,6 +206,7 @@ export const favoriteCourts = async (req: Request, res: Response) => {
     }
 };
 
+//OBTENER MIS PISTAS FAVORITAS
 export const getMyFavoriteCourts = async (req: Request, res: Response) => {
     try {
 

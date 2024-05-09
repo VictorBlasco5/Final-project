@@ -3,7 +3,7 @@ import { Match } from "../models/Match";
 import { UserMatch } from "../models/User_match";
 import { User } from "../models/User";
 
-
+//OBTENER PARTIDOS
 export const getMatches = async (req: Request, res: Response) => {
     try {
 
@@ -28,6 +28,7 @@ export const getMatches = async (req: Request, res: Response) => {
     }
 }
 
+//CREAR PARTIDO
 export const createMatch = async (req: Request, res: Response) => {
     try {
         const { number_players, information, match_date, court_id } = req.body;
@@ -67,6 +68,7 @@ export const createMatch = async (req: Request, res: Response) => {
     }
 }
 
+//ELIMINAR PARTIDO
 export const deleteMatch = async (req: Request, res: Response) => {
     try {
         const { userId, roleName } = req.tokenData;
@@ -117,6 +119,7 @@ export const deleteMatch = async (req: Request, res: Response) => {
     }
 }
 
+//APUNTARME A UN PARTIDO
 export const assistanceMatch = async (req: Request, res: Response) => {
     try {
 
@@ -173,6 +176,7 @@ export const assistanceMatch = async (req: Request, res: Response) => {
     }
 }
 
+//OBTENER PARTIDOS A LOS QUE ME HE APUNTADO
 export const getMatchesAssistance = async (req: Request, res: Response) => {
     try {
 
@@ -201,6 +205,7 @@ export const getMatchesAssistance = async (req: Request, res: Response) => {
     }
 }
 
+//OBTENER PARTIDOS POR PISTA
 export const getMatchesByCourt = async (req: Request, res: Response) => {
     try {
 
@@ -229,6 +234,7 @@ export const getMatchesByCourt = async (req: Request, res: Response) => {
     }
 }
 
+//OBTENER PARTIDOS QUE HE CREADO
 export const getMyMatches = async (req: Request, res: Response) => {
     try {
 
@@ -258,6 +264,7 @@ export const getMyMatches = async (req: Request, res: Response) => {
     }
 }
 
+//ACTUALIZAR PARTIDO
 export const updateMatch = async (req: Request, res: Response) => {
     try {
         const matchId = req.params.id;

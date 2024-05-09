@@ -14,6 +14,9 @@ export class Court extends BaseEntity{
     @Column({ name: 'direction' })
     direction!:string
 
+    @Column({ name: 'URL_maps' })
+    URL_maps!:string
+
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     created_at!: Date;
 

@@ -27,6 +27,12 @@ export class Court1714129641445 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
+                        name: "URL_maps",
+                        type: "varchar",
+                        length: "255",
+                        isNullable: false,
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()",
