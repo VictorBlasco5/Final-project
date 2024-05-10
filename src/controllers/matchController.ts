@@ -36,6 +36,12 @@ export const createMatch = async (req: Request, res: Response) => {
 
         const newMatch = new Match();
         const users = new User();
+
+        //apuntarme al partido que creo
+        let signed_up_user: number[] = [userId]
+        const signed_up_user2 = JSON.stringify(signed_up_user)
+        newMatch.signed_up = signed_up_user2 as any
+
         newMatch.number_players = number_players;
         newMatch.information = information;
         newMatch.match_date = match_date;
@@ -44,6 +50,7 @@ export const createMatch = async (req: Request, res: Response) => {
         newMatch.user = users;
         await newMatch.save();
 
+        //tabla intermedia
         const userMatch = new UserMatch();
         const user = new User();
         user.id = userId;
@@ -278,7 +285,7 @@ export const updateMatch = async (req: Request, res: Response) => {
             })
         }
 
-        const updateMatch = await Match.findOne({
+        const findMatch = await Match.findOne({
             where: { id: parseInt(matchId) },
             relations: ["user"],
         })
@@ -302,7 +309,13 @@ export const updateMatch = async (req: Request, res: Response) => {
             }
         )
 
-        if (updateMatch?.user.id !== userId) {
+        const updateMatch = await Match.findOne({
+            where: { id: parseInt(matchId) },
+            relations: ["user"],
+        })
+
+
+        if (findMatch?.user.id !== userId) {
             return res.status(403).json({
                 success: false,
                 message: "You cant update this match"
