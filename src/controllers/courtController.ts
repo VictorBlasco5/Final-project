@@ -9,6 +9,7 @@ export const createCourt = async (req: Request, res: Response) => {
 
         const name = req.body.name;
         const direction = req.body.direction;
+        const URL_maps = req.body.URL_maps;
 
         const courtExist = await Court.findOneBy({
             name: name
@@ -23,7 +24,8 @@ export const createCourt = async (req: Request, res: Response) => {
 
         const newCourt = await Court.create({
             name: name,
-            direction: direction
+            direction: direction,
+            URL_maps: URL_maps
         }).save()
 
         res.status(200).json(
@@ -74,6 +76,7 @@ export const updateCourt = async (req: Request, res: Response) => {
         const courtId = req.params.id;
         const name = req.body.name;
         const direction = req.body.direction;
+        const  URL_maps = req.body.URL_maps;
 
         //validacion
         const court = await Court.findOneBy({
@@ -94,7 +97,8 @@ export const updateCourt = async (req: Request, res: Response) => {
             },
             {
                 name: name,
-                direction: direction
+                direction: direction,
+                URL_maps: URL_maps
             }
         )
 

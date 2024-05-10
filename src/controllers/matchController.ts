@@ -191,6 +191,7 @@ export const getMatchesAssistance = async (req: Request, res: Response) => {
 
         const matches = await Match.createQueryBuilder("match")
             .innerJoinAndSelect("match.court", "court")
+            .innerJoinAndSelect("match.user", "user")
             .where(`JSON_CONTAINS(match.signed_up, :userId)`, { userId: JSON.stringify(userId) })
             .getMany();
 
@@ -198,11 +199,10 @@ export const getMatchesAssistance = async (req: Request, res: Response) => {
         res.status(200).json(
             {
                 success: true,
-                message: "Matches retieved successfully",
+                message: "Matches retrieved successfully",
                 data: matches
             }
         )
-
     } catch (error) {
         res.status(500).json({
             success: false,
