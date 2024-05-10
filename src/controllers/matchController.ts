@@ -34,6 +34,17 @@ export const createMatch = async (req: Request, res: Response) => {
         const { number_players, information, match_date, court_id } = req.body;
         const userId = req.tokenData.userId;
 
+        const dateMatchExists = await Match.findOne({
+            where: { match_date: match_date }
+        })
+
+        if (dateMatchExists) {
+            return res.status(400).json({
+                success: false,
+                message: "This hour is busy"
+            });
+        }
+
         const newMatch = new Match();
         const users = new User();
 
