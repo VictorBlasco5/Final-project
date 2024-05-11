@@ -103,6 +103,14 @@ export const updateProfile = async (req: Request, res: Response) => {
             })
         }
 
+        const positions = ['Base', 'Alero', 'Pivot'];
+        if (!positions.includes(favorite_position)) {
+            return res.status(400).json({
+                success: false,
+                message: "Favorite position must be 'Base', 'Alero' or 'Pivot'"
+            })
+        }
+
         const userUpdate = await User.update(
             {
                 id: req.tokenData.userId

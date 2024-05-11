@@ -236,7 +236,7 @@ Pasamos el token el usuario.
 
 ### Frontend :tv:
 
-- Desde [aquí](https://github.com/VictorBlasco5/Final-project-frontend){:target="_blank"} podrás acceder al frontend de este proyecto.
+- Desde [aquí](https://github.com/VictorBlasco5/Final-project-frontend) podrás acceder al frontend de este proyecto.
 
 
 ### Futuras funcionalidades :rocket:
@@ -246,8 +246,8 @@ Pasamos el token el usuario.
 
 ### Autor :curly_haired_man:
 - **Víctor Blasco** - Project Developer.
-   - [GitHub](https://github.com/VictorBlasco5){:target="_blank"}
-   - [LinkedIn](https://www.linkedin.com/in/victor-blasco-4b7588304/){:target="_blank"}
+   - [GitHub](https://github.com/VictorBlasco5)
+   - [LinkedIn](https://www.linkedin.com/in/victor-blasco-4b7588304/)
 
 ### Agradecimientos 
 - Agradecimiento a GeeksHubs Academy por su implicación en mi aprendizaje.
