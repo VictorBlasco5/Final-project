@@ -38,6 +38,15 @@ export const createMatch = async (req: Request, res: Response) => {
             where: { match_date: match_date }
         })
 
+        //fecha anterior a la actual
+        if (new Date(match_date) < new Date()) {
+            return res.status(400).json({
+                success: false,
+                message: "The date has passed"
+            });
+        }
+
+        //hora ocupada
         if (dateMatchExists) {
             return res.status(400).json({
                 success: false,
