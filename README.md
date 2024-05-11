@@ -54,20 +54,23 @@ $ npm run seed
 ### Usuarios modelo :pouting_face:
 #### User
 ````
-Nombre: User
 Email: user@user.com
 Contraseña: Aa12345
 ````
 #### Admin
 ````
-Nombre: Admin
 Email: admin@admin.com
 Contraseña: Aa12345
 ````
 
 ### Endpoints :dart:
-##### Autenticación
+
+<details>
+
+<summary> Autenticación</summary>
+
 - `POST /api/auth/register` - **Registrar nuevo usuario.**
+
 Pasamos los siguientes datos por el body. Ejemplo:
 ````
 {
@@ -81,6 +84,7 @@ Pasamos los siguientes datos por el body. Ejemplo:
 ![Body](./img/body.jpg)
 
 - `POST /api/auth/login` - **Inicio de sesión.**
+
 Pasamos los siguientes datos por el body. Ejemplo:
 ````
 {
@@ -88,7 +92,13 @@ Pasamos los siguientes datos por el body. Ejemplo:
   "password": "contraseña"
 }
 ````
-##### Usuarios
+</details>
+
+
+
+<details>
+
+<summary> Usuarios</summary>
 
 - `GET /api/users` - **Ver todos los usuarios. (Solo el admin).**
 
@@ -100,6 +110,7 @@ Pasamos el token de un usuario admin.
 Pasamos el token del propio usuario.
 
 - `PUT /api/users/profile` - **Modificar datos del perfil.**
+
 Pasamos el token del propio usuario y los datos que queramos modificar por el body. Ejemplo:
 ````
 {
@@ -118,8 +129,16 @@ Pasamos el token del superadmin y el id del usuario a eliminar por parámetro.
 
 ![Parámetro](./img/parametro.jpg)
 
-##### Pistas
+</details>
+
+
+
+<details>
+
+<summary> Pistas</summary>
+
 - `POST /api/courts` - **Crear pista. (Solo el admin).**
+
 Pasamos el token del usuario admin y los siguientes datos por el body. Ejemplo:
 ````
 {
@@ -130,9 +149,11 @@ Pasamos el token del usuario admin y los siguientes datos por el body. Ejemplo:
 ````
 
 - `GET /api/courts` - **Ver todas las pistas.**
+
 Pasamos el token de un usuario.
 
 - `PUT /api/courts/{id}` - **Actualizar una pista. (Solo el admin)**
+
 Pasamos el token del usuario admin y por el body los datos que deseemos actualizar. Ejemplo:
 ````
 {
@@ -143,15 +164,23 @@ Pasamos el token del usuario admin y por el body los datos que deseemos actualiz
 ````
 
 - `DELETE /api/courts/{id}` - **Eliminar una pista. (Solo el admin).**
+
 Pasamos por parámetro el número de id de la pista que queramos eliminar.
 
+</details>
 
 
-##### Partidos
+
+<details>
+
+<summary> Partidos</summary>
+
 - `GET /api/matches` - **Ver todos los partidos.**
+
 Pasamos el token de un usuario.
 
 - `POST /api/matches` - **Crear un partido.**
+
 Pasamos el token de un usuario y los siguientes datos por el body. Ejemplo:
 ````
 {
@@ -162,32 +191,47 @@ Pasamos el token de un usuario y los siguientes datos por el body. Ejemplo:
 }
 ````
 - `PUT /api/matches/{id}` - **Modificar un partido.**
+
 Pasamos el token del usuario que lo ha creado y los datos a modificar por el body.
 
 - `DELETE /api/matches/{id}` - **Eliminar un partido.**
+
 Pasamos el token del usuario que lo ha creado y el id del partido a eliminar por parámetro.
 
 - `PUT /api/matches/assistance/{id}` - **Apuntarse a desapuntase de un partido.**
+
 Pasamos el token del usuario y el id del partido por parámetro.
 
 - `GET /api/matches/assitance` - **Ver partidos a los que estoy apuntado.**
+
 Pasamos el token del usuario.
 
 - `GET /api/matches/own` - **Ver partidos que he creado.**
+
 Pasamos el token del usuario.
 
 - `GET /api/matches/courts/{id}` - **Ver partidos que hay en cada pista**
+
 Pasamos el token del usuario y el id de la pista que queramos por parámetro.
 
+</details>
 
-##### Favoritas
+
+
+<details>
+
+<summary> Pistas favoritas</summary>
+
 
 - `PUT /api/courts/fav/{id}` - **Añadir una pista a mis favoritas.**
+
 Pasamos el token del usuario y el id de la pista que queramos añadir por parámetro.
 
 - `GET /api/courts/fav` - **Ver mis pistas favoritas.**
+
 Pasamos el token el usuario.
 
+</details>
 
 ### Frontend :tv:
 
