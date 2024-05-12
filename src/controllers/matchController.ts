@@ -54,6 +54,20 @@ export const createMatch = async (req: Request, res: Response) => {
             });
         }
 
+        if (information.length < 1) {
+            return res.status(400).json({
+                success: false,
+                message: "Information is required"
+            })
+        }
+
+        if (information.length > 255) {
+            return res.status(400).json({
+                success: false,
+                message: "Information must be at most 255 characters"
+            })
+        }
+
         const newMatch = new Match();
         const users = new User();
 

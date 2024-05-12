@@ -22,6 +22,34 @@ export const createCourt = async (req: Request, res: Response) => {
             })
         }
 
+        if (name.length < 3) {
+            return res.status(400).json({
+                success: false,
+                message: "Name must be at least 3 characters"
+            })
+        }
+
+        if (name.length > 50) {
+            return res.status(400).json({
+                success: false,
+                message: "Name must be at most 50 characters"
+            })
+        }
+
+        if (direction.length < 3) {
+            return res.status(400).json({
+                success: false,
+                message: "Direction must be at least 3 characters"
+            })
+        }
+
+        if (direction.length > 255) {
+            return res.status(400).json({
+                success: false,
+                message: "Direction must be at most 255 characters"
+            })
+        }
+
         const newCourt = await Court.create({
             name: name,
             direction: direction,

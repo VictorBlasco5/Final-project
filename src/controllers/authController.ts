@@ -8,6 +8,21 @@ export const register = async (req: Request, res: Response) => {
     try {
 
         const { name, nickname, email, password, favorite_position, presentation, image } = req.body;
+        
+
+        if(name.length < 3 || name.length > 50){
+            return res.status(400).json({
+                success: false,
+                message: "Name must be between 3 and 50 characters"
+            })
+        }
+
+        if(nickname.length < 3 || nickname.length > 50){
+            return res.status(400).json({
+                success: false,
+                message: "Nickname must be between 3 and 50 characters"
+            })
+        }
 
         //validacion contraseña
         if (password.length < 5 || password.length > 12) {
