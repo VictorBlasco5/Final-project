@@ -22,14 +22,14 @@ export const matchSeedDatabase = async () => {
 
         const match2 = new Match();
         match2.number_players = 4;
-        match2.signed_up = JSON.stringify([1, 2, 4]) as any;
+        match2.signed_up = JSON.stringify([1, 6, 4]) as any;
         match2.information = "Partido de amigos número 2";
         match2.match_date = "2024-04-09 16:45:00";
         const court2 = new Court()
         court2.id = 2
         match2.court = court2;
         const user2 = new User()
-        user2.id = 2
+        user2.id = 3
         match2.user = user2;
         await match2.save();
 

@@ -14,7 +14,7 @@ export const userMatchSeedDatabase = async () => {
         await unserMatch1.save();
 
         const unserMatch2 = UserMatch.create({
-            user: {id: 2},
+            user: {id: 3},
             match: {id: 2}
         });
         await unserMatch2.save();
