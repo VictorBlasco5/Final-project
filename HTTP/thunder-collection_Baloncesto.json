@@ -1,0 +1,394 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Baloncesto",
+    "collectionId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+    "dateExported": "2024-05-12T17:19:22.373Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "422d8e10-9fef-4079-a51f-cceee4009e4f",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2024-04-26T17:21:32.953Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "72924b7a-8954-4942-b160-6f8cfa861c8b",
+            "name": "Users",
+            "containerId": "",
+            "created": "2024-04-27T07:56:14.188Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "d2f6f200-8d0b-4f15-9b15-820b11963e6c",
+            "name": "Courts",
+            "containerId": "",
+            "created": "2024-04-27T15:22:48.246Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "84c45cd9-74d2-49b1-9343-89c02881d8c6",
+            "name": "Matches",
+            "containerId": "",
+            "created": "2024-04-29T09:39:48.215Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "5231442f-f2f1-404f-9dbd-fa47289c6de8",
+            "name": "Favoritas",
+            "containerId": "",
+            "created": "2024-05-11T09:10:49.065Z",
+            "sortNum": 50000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "58834ea7-2f25-4f93-bf5e-fa838ebe7cc1",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "422d8e10-9fef-4079-a51f-cceee4009e4f",
+            "name": "Register",
+            "url": "localhost:4000/api/auth/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-04-26T17:21:43.957Z",
+            "modified": "2024-05-12T17:14:11.191Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"name\",\n  \"nickname\": \"nickname\",\n  \"email\": \"name@name.com\",\n  \"password\": \"Aa12345\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d1b1f1a0-971e-4eb3-a9f1-41638c1f3698",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "5231442f-f2f1-404f-9dbd-fa47289c6de8",
+            "name": "Add favorite court",
+            "url": "localhost:4000/api/courts/fav/2",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2024-05-05T17:46:19.349Z",
+            "modified": "2024-05-09T12:09:31.864Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInJvbGVOYW1lIjoidXNlciIsIm5hbWUiOiJWw61jdG9yIiwiaWF0IjoxNzE1MjU2MjY3LCJleHAiOjE3MTUzNDI2Njd9.hZUTj23K2LGOUuSSX8-w9bqviMfGTIDG1QyEJaMVJI4"
+            }
+        },
+        {
+            "_id": "74795a17-82f0-4bba-a575-ba793d2e2bf9",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "5231442f-f2f1-404f-9dbd-fa47289c6de8",
+            "name": "Get my favorite courts",
+            "url": "localhost:4000/api/courts/fav",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-05-07T16:52:58.064Z",
+            "modified": "2024-05-11T09:37:19.220Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTU0MTc5NDcsImV4cCI6MTcxNTUwNDM0N30.Z2tf1FIge0FPGSPkPfmKpaWEiMHUAaZg5wYQiPoY5Rg"
+            }
+        },
+        {
+            "_id": "b601b768-0929-4fc7-bffb-e79d3370a336",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "422d8e10-9fef-4079-a51f-cceee4009e4f",
+            "name": "Login",
+            "url": "localhost:4000/api/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-26T18:33:34.389Z",
+            "modified": "2024-05-12T17:15:43.006Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"victor@victor.com\",\n  \"password\": \"Aa12345\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "531ee51b-d2e8-4159-8ee1-77aa8c6ec0c6",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "72924b7a-8954-4942-b160-6f8cfa861c8b",
+            "name": "Get profile",
+            "url": "localhost:4000/api/users/profile",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-04-27T07:56:21.849Z",
+            "modified": "2024-04-27T08:35:47.909Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoidXNlciIsIm5hbWUiOiJVc2VyIiwiaWF0IjoxNzE0MjA2ODM1LCJleHAiOjE3MTQyMjEyMzV9.GCSGaJ-b1r1nTHA8m47JRDdteJJdK1oiQ5CZkjWGQBg"
+            }
+        },
+        {
+            "_id": "a0480dd3-3467-41c1-ad1c-1c53cd5cb20c",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "72924b7a-8954-4942-b160-6f8cfa861c8b",
+            "name": "Get users",
+            "url": "localhost:4000/api/users",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-04-27T08:45:21.803Z",
+            "modified": "2024-05-07T11:55:30.244Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTUwODI5MjQsImV4cCI6MTcxNTE2OTMyNH0.5fnoG2I7oApSz7fuUiqTZ3GpJso1veYumxmOj9u5ka8"
+            }
+        },
+        {
+            "_id": "4537c11e-c8ee-468f-acfe-c8ef147e7a08",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "72924b7a-8954-4942-b160-6f8cfa861c8b",
+            "name": "Update profile",
+            "url": "localhost:4000/api/users/profile",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-04-27T08:58:42.500Z",
+            "modified": "2024-05-12T17:16:04.212Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"name1\",\n  \"nickname\" : \"name2\",\n  \"favorite_position\": \"Alero\",\n  \"presentation\": \"Hola\",\n  \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Magic_Johnson_at_SXSW_2022_%2851958828669%29_%28cropped%29.jpg/800px-Magic_Johnson_at_SXSW_2022_%2851958828669%29_%28cropped%29.jpg\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInJvbGVOYW1lIjoidXNlciIsIm5hbWUiOiJWw61jdG9yIiwiaWF0IjoxNzE1NTM0MTQ0LCJleHAiOjE3MTU2MjA1NDR9.1mplzxvH6TufZq4C0Kr08LR49rs9T8vUGFLIRK6EvWI"
+            }
+        },
+        {
+            "_id": "ee03ba82-8caf-4df1-b5dd-a30d7cf121c2",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "72924b7a-8954-4942-b160-6f8cfa861c8b",
+            "name": "Delete user",
+            "url": "localhost:4000/api/users/9",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-04-27T09:17:31.576Z",
+            "modified": "2024-04-27T09:25:50.133Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTQyMDk2MTgsImV4cCI6MTcxNDIyNDAxOH0.ZZMKKaC093bGnOIC-ThpVs-BZFgvRbFVDrMKYzUbvw8"
+            }
+        },
+        {
+            "_id": "eb3cecf0-bd3f-4c70-8cef-2d120874e525",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "d2f6f200-8d0b-4f15-9b15-820b11963e6c",
+            "name": "Create courts",
+            "url": "localhost:4000/api/courts",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-04-27T15:22:55.782Z",
+            "modified": "2024-05-12T17:17:22.386Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"name\",\n  \"direction\": \"C/ direction\",\n  \"URL_maps\": \"https://maps.app.goo.gl/hzg9b9nzaLzDf7iV9\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTU1MDczNTcsImV4cCI6MTcxNTU5Mzc1N30.VNuyFVnt0R24IuHVTOPnXPD6c1ItSFEpc3m3hu_ftO4"
+            }
+        },
+        {
+            "_id": "19ebba53-4413-4772-bc01-a7ace3a54eb1",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "d2f6f200-8d0b-4f15-9b15-820b11963e6c",
+            "name": "Get courts",
+            "url": "localhost:4000/api/courts",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-04-27T15:30:40.409Z",
+            "modified": "2024-05-11T09:06:49.298Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInJvbGVOYW1lIjoidXNlciIsIm5hbWUiOiJWw61jdG9yIiwiaWF0IjoxNzE1NDE4NDAxLCJleHAiOjE3MTU1MDQ4MDF9.kjvzkxmxK1WXX_2NzNlfBU7C-zykEjc2Ktj2o4I1Kv4"
+            }
+        },
+        {
+            "_id": "7d36f6ee-f075-4f88-bc93-57922a0112f4",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "d2f6f200-8d0b-4f15-9b15-820b11963e6c",
+            "name": "Update court",
+            "url": "localhost:4000/api/courts/6",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2024-04-27T15:49:25.412Z",
+            "modified": "2024-05-11T09:02:17.258Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Eliseo Vidal\",\n  \"direction\": \"Calle Bolivia\",\n  \"URL_maps\": \"https://maps.app.goo.gl/hzg9b9nzaLzDf7iV9\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTU0MTc5NDcsImV4cCI6MTcxNTUwNDM0N30.Z2tf1FIge0FPGSPkPfmKpaWEiMHUAaZg5wYQiPoY5Rg"
+            }
+        },
+        {
+            "_id": "ffdb4d2e-8817-4146-9739-04c9fadffb88",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "d2f6f200-8d0b-4f15-9b15-820b11963e6c",
+            "name": "Delete court",
+            "url": "localhost:4000/api/courts/6",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-04-27T16:00:07.757Z",
+            "modified": "2024-05-11T09:10:19.403Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTU0MTc5NDcsImV4cCI6MTcxNTUwNDM0N30.Z2tf1FIge0FPGSPkPfmKpaWEiMHUAaZg5wYQiPoY5Rg"
+            }
+        },
+        {
+            "_id": "b0ac9e7f-7b84-4197-a957-49ff99007b13",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "84c45cd9-74d2-49b1-9343-89c02881d8c6",
+            "name": "Get matches",
+            "url": "localhost:4000/api/matches",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-04-29T09:39:56.713Z",
+            "modified": "2024-05-11T09:11:39.433Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTU0MTc5NDcsImV4cCI6MTcxNTUwNDM0N30.Z2tf1FIge0FPGSPkPfmKpaWEiMHUAaZg5wYQiPoY5Rg"
+            }
+        },
+        {
+            "_id": "03e9ac06-a177-4cc3-ad0f-419edf51c851",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "84c45cd9-74d2-49b1-9343-89c02881d8c6",
+            "name": "Create match",
+            "url": "localhost:4000/api/matches",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-04-29T10:07:54.922Z",
+            "modified": "2024-05-12T17:18:53.805Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"number_players\": \"8\",\n  \"information\": \"Partido para disfrutar del baloncesto.\",\n  \"match_date\": \"2024-06-11 17:30:00\",\n  \"court_id\": \"4\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInJvbGVOYW1lIjoidXNlciIsIm5hbWUiOiJWw61jdG9yIiwiaWF0IjoxNzE1NTA5ODYyLCJleHAiOjE3MTU1OTYyNjJ9.dIQQn1J0UezNj-L1CrQDvmrMZQDRmW9VbINslKyahR4"
+            }
+        },
+        {
+            "_id": "4fe388d1-9c5a-4d4f-8b7f-c7154db6bd0e",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "84c45cd9-74d2-49b1-9343-89c02881d8c6",
+            "name": "Update match",
+            "url": "localhost:4000/api/matches/6",
+            "method": "PUT",
+            "sortNum": 125000,
+            "created": "2024-05-06T10:06:38.695Z",
+            "modified": "2024-05-12T17:18:58.978Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"number_players\": \"6\",\n  \"information\": \"Disfrutemos juntos.\",\n  \"match_date\": \"2025-09-05 21:00:00\",\n  \"court_id\": \"3\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInJvbGVOYW1lIjoidXNlciIsIm5hbWUiOiJWw61jdG9yIiwiaWF0IjoxNzE1MzI4MTE5LCJleHAiOjE3MTU0MTQ1MTl9.MDJKNvwzcAhc1Sr4RI6A6ObvEEPt3GlgsKULO6FXU8c"
+            }
+        },
+        {
+            "_id": "ed9418d4-70b0-4b41-85af-d2025833f360",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "84c45cd9-74d2-49b1-9343-89c02881d8c6",
+            "name": "Delete match",
+            "url": "localhost:4000/api/matches/35",
+            "method": "DELETE",
+            "sortNum": 130000,
+            "created": "2024-05-01T10:50:40.270Z",
+            "modified": "2024-05-06T10:25:13.134Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTQ5OTEwOTksImV4cCI6MTcxNTA3NzQ5OX0.C3q2lC1j2rVocwJ8hbCAoAqbvmUSX36IdOs0uOFTj5M"
+            }
+        },
+        {
+            "_id": "b9237667-f2df-4df5-88a0-c3126e38462e",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "84c45cd9-74d2-49b1-9343-89c02881d8c6",
+            "name": "SignUP match",
+            "url": "localhost:4000/api/matches/assistance/3",
+            "method": "PUT",
+            "sortNum": 140000,
+            "created": "2024-05-02T14:51:20.999Z",
+            "modified": "2024-05-11T09:29:07.237Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTU0MTc5NDcsImV4cCI6MTcxNTUwNDM0N30.Z2tf1FIge0FPGSPkPfmKpaWEiMHUAaZg5wYQiPoY5Rg"
+            }
+        },
+        {
+            "_id": "bedffebc-ba39-40e8-8068-5f0bab300c27",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "84c45cd9-74d2-49b1-9343-89c02881d8c6",
+            "name": "Get matches assistance",
+            "url": "localhost:4000/api/matches/assistance",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-05-02T16:48:22.626Z",
+            "modified": "2024-05-11T09:31:15.905Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTU0MTc5NDcsImV4cCI6MTcxNTUwNDM0N30.Z2tf1FIge0FPGSPkPfmKpaWEiMHUAaZg5wYQiPoY5Rg"
+            }
+        },
+        {
+            "_id": "056ee960-df12-4c55-b02c-d8ee9ec5b13d",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "84c45cd9-74d2-49b1-9343-89c02881d8c6",
+            "name": "Gey my matches",
+            "url": "localhost:4000/api/matches/own",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2024-05-02T17:36:33.499Z",
+            "modified": "2024-05-11T09:32:18.255Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTU0MTc5NDcsImV4cCI6MTcxNTUwNDM0N30.Z2tf1FIge0FPGSPkPfmKpaWEiMHUAaZg5wYQiPoY5Rg"
+            }
+        },
+        {
+            "_id": "779b3a9e-4cfd-4008-96e5-8330413665bb",
+            "colId": "74c991d9-cfbb-4ec5-867e-0da263047264",
+            "containerId": "84c45cd9-74d2-49b1-9343-89c02881d8c6",
+            "name": "Get matches by court",
+            "url": "localhost:4000/api/matches/courts/2",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2024-05-05T16:41:44.986Z",
+            "modified": "2024-05-11T09:33:27.724Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MTU0MTc5NDcsImV4cCI6MTcxNTUwNDM0N30.Z2tf1FIge0FPGSPkPfmKpaWEiMHUAaZg5wYQiPoY5Rg"
+            }
+        }
+    ],
+    "ref": "HknKNHHvC8pQ7O6uvefonjBKXGdfiBsWYYjMANcKeSmSbQm9Lu7-joc5fGtlzPYmgj92awG9zpfwjPdlnbe9rQ"
+}
